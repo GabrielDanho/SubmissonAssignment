@@ -1,0 +1,50 @@
+﻿<Window x:Class="SubmissonAssignment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:SubmissonAssignment.Models"
+        xmlns:local="clr-namespace:SubmissonAssignment"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0 0 30 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Förnamn" />
+                <TextBox Name="tb_FirstName" Padding="3" Margin="0 0 0 10" />
+
+                <TextBlock Text="Efternamn" />
+                <TextBox Name="tb_LastName" Padding="3" Margin="0 0 0 10" />
+
+                <TextBlock Text="E-postadress" />
+                <TextBox Name="tb_Email" Padding="3" Margin="0 0 0 10" />
+            </StackPanel>
+
+            <Button x:Name="btn_Add" Click="Btn_Add_Click" Grid.Row="1" VerticalAlignment="Bottom" Content="LÄGG TILL" Padding="5" />
+            
+        </Grid>
+
+        <ListView x:Name="lv_Employees" Grid.Column="1" Margin="30 0 0 0">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="models:Employee">
+                    <StackPanel Margin="0 5 0 5">
+                        <TextBlock FontWeight="Bold" Text="{Binding DisplayName}" />
+                        <TextBlock Text="{Binding Email}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </Grid>
+</Window>
