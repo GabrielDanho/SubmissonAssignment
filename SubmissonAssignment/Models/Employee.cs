@@ -19,11 +19,10 @@ internal class Employee : IEmployee
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
-
     public string Phone { get; set; } = null!;
     public string Address { get; set; } = null!;
 
 
 
-    //public string DisplayName => $"{FirstName} {LastName}";
+    public string DisplayName => $"{FirstName} {LastName} {Phone} {Address}";
 }

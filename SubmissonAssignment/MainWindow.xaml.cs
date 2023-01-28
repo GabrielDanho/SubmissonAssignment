@@ -20,9 +20,6 @@ using System.Windows.Shapes;
 
 namespace SubmissonAssignment
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
@@ -34,37 +31,6 @@ namespace SubmissonAssignment
             InitializeComponent();
             file.FilePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
             PopulateEmployeesList();
-            char select;
-            int insert = 1;
-
-            do
-            {
-                select = chooseMenu();
-                switch (select)
-                {
-                    case 'a':
-                        CreatingUser();
-                        break;
-                    case 'b':
-                        DeletingUser();
-                        break;
-                }
-            } while (select != 'd');
-        }
-
-
-        public static char chooseMenu()
-        {
-            char select;
-
-            Console.WriteLine("====== VÄLKOMMEN TILL ADRESSBOKEN ======");
-            Console.WriteLine("a. Skapa en kontakt");
-            Console.WriteLine("b. Ta bort en specifik kontakt");
-            Console.WriteLine("c. Se kontakt listan");
-            Console.WriteLine("d. Exit");
-            Console.WriteLine("Välj ett av alternativen ovan: ");
-
-            return Convert.ToChar(Console.ReadLine);
         }
 
         private void PopulateEmployeesList()
@@ -100,7 +66,6 @@ namespace SubmissonAssignment
             if (lv_Employees.SelectedItems != null!)
             {
                 employees.RemoveAt(lv_Employees.SelectedIndex);
-                //Clear_Add();
             }
         }
 
@@ -121,6 +86,15 @@ namespace SubmissonAssignment
             tb_Email.Text = "";
             tb_Phone.Text = "";
             tb_Address.Text = "";
+        }
+
+        private void Btn_List_Click(object sender, RoutedEventArgs e)
+        {
+            int count = 1;
+            foreach (var employee in employees)
+            {
+                Console.WriteLine($"{count} firstname:{tb_FirstName}, lastname:{tb_LastName}, email:{tb_Email}, phone:{tb_Phone}, add");
+            }
         }
     }
 }
