@@ -33,41 +33,38 @@ namespace SubmissonAssignment
         {
             InitializeComponent();
             file.FilePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
-            Menu();
             PopulateEmployeesList();
-        }
+            char select;
+            int insert = 1;
 
-        public void Menu()
-        {
-            Console.WriteLine("====== VÄLKOMMEN TILL ADRESSBOKEN ======");
-            Console.WriteLine("1. Skapa en kontakt");
-            Console.WriteLine("2. Ta bort en specifik kontakt");
-            Console.WriteLine("Välj ett av alternativen ovan: ");
-            bool loop = true;
-            while (loop)
+            do
             {
-
-                string val = Console.ReadLine();
-
-                switch (val)
+                select = chooseMenu();
+                switch (select)
                 {
-                    case "1":
+                    case 'a':
                         CreatingUser();
                         break;
-                    case "2":
-
-                        break;
-                    case "3":
-
-                        break;
-                    case "4":
-
-                        break;
-                    case "5":
-                        Console.WriteLine("Programmet stängs, hej då");
+                    case 'b':
+                        DeletingUser();
                         break;
                 }
-            }
+            } while (select != 'd');
+        }
+
+
+        public static char chooseMenu()
+        {
+            char select;
+
+            Console.WriteLine("====== VÄLKOMMEN TILL ADRESSBOKEN ======");
+            Console.WriteLine("a. Skapa en kontakt");
+            Console.WriteLine("b. Ta bort en specifik kontakt");
+            Console.WriteLine("c. Se kontakt listan");
+            Console.WriteLine("d. Exit");
+            Console.WriteLine("Välj ett av alternativen ovan: ");
+
+            return Convert.ToChar(Console.ReadLine);
         }
 
         private void PopulateEmployeesList()
@@ -98,12 +95,7 @@ namespace SubmissonAssignment
             ClearForm();
         }
 
-        private void Btn_Add_Click(object sender, RoutedEventArgs e)
-        {
-            CreatingUser();
-        }
-
-        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        private void DeletingUser()
         {
             if (lv_Employees.SelectedItems != null!)
             {
@@ -112,15 +104,15 @@ namespace SubmissonAssignment
             }
         }
 
-        //private void Clear_Add()
-        //{
-        //    lv_Employees.Items.Clear();
-        //    foreach (var employee in employees)
-        //    {
-        //        lv_Employees.Items.Add(employee.FirstName + " " + employee.LastName + " " + employee.Email + " " + employee.Phone.ToString() + " " + employee.Address);
-        //    }
-        //}
-        
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            CreatingUser();
+        }
+
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeletingUser();
+        }
 
         private void ClearForm()
         {

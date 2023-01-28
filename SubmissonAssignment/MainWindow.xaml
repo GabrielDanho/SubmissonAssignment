@@ -38,8 +38,9 @@
 
             </StackPanel>
 
-            <Button x:Name="btn_Add" Click="Btn_Add_Click" Grid.Row="1" VerticalAlignment="Top" Content="LÄGG TILL" Padding="5" Margin="0,10,0,0" />
-            <Button x:Name="btn_Delete" Click="Btn_Delete_Click" Grid.Row="1" VerticalAlignment="Top" Content="TA BORT" Padding="5" Margin="0,53,0,0" />
+            <Button x:Name="btn_Add" Click="Btn_Add_Click" Grid.Row="1" VerticalAlignment="Top" Content="LÄGG TILL" Padding="5" Margin="0,5,0,0" />
+            <Button x:Name="btn_List" Click="Btn_List_Click" Grid.Row="1" VerticalAlignment="Top" Content="VISA KONTAKTER" Padding="5" Margin="0,38,0,0" />
+            <Button x:Name="btn_Delete" Click="Btn_Delete_Click" Grid.Row="1" VerticalAlignment="Top" Content="TA BORT" Padding="5" Margin="0,72,0,0" />
 
         </Grid>
 
